@@ -1,0 +1,1311 @@
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sarah Mitchell - Registered Dietitian & Nutrition Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2d5016;
+            --secondary: #8b6f47;
+            --accent: #d4a574;
+            --light-bg: #f9f7f4;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+            --sage: #9caf88;
+            --cream: #faf8f5;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(45, 80, 22, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><path d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z" fill="%239caf88" opacity="0.1"/></svg>') no-repeat;
+            background-size: cover;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 4em;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: var(--primary);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.3em;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.2);
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            animation: fadeInUp 0.6s ease both;
+        }
+        
+        .stat-item:nth-child(2) { animation-delay: 0.1s; }
+        .stat-item:nth-child(3) { animation-delay: 0.2s; }
+        .stat-item:nth-child(4) { animation-delay: 0.3s; }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 120px 40px;
+            background: var(--white);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+        
+        .section-header h2 {
+            font-size: 3em;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 1.2em;
+            color: var(--secondary);
+            line-height: 1.8;
+        }
+        
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .service-card {
+            background: var(--light-bg);
+            padding: 50px 40px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-color: var(--sage);
+        }
+        
+        .service-icon {
+            font-size: 3em;
+            margin-bottom: 25px;
+            display: block;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            color: var(--secondary);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .service-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: gap 0.3s ease;
+        }
+        
+        .service-link:hover {
+            gap: 15px;
+        }
+        
+        /* Courses Section */
+        .courses {
+            padding: 120px 40px;
+            background: var(--cream);
+        }
+        
+        .courses-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            border-color: var(--sage);
+        }
+        
+        .course-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--sage) 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .course-header h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        .course-header p {
+            opacity: 0.95;
+            font-size: 1.1em;
+        }
+        
+        .course-body {
+            padding: 40px;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .course-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            color: var(--secondary);
+        }
+        
+        .course-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .course-features li::before {
+            content: '✓';
+            background: var(--sage);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .course-footer {
+            padding: 0 40px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .course-price {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .course-button {
+            background: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .course-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        /* Tools Section */
+        .tools {
+            padding: 120px 40px;
+            background: white;
+        }
+        
+        .tools-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .tool-card {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        
+        .tool-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .tool-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .tool-card p {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .tool-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-button:hover {
+            background: var(--sage);
+            transform: scale(1.05);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 120px 40px;
+            background: var(--cream);
+        }
+        
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .about-content h2 {
+            font-size: 3em;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+        
+        .about-content p {
+            font-size: 1.2em;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .credentials {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .credentials h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .credentials ul {
+            list-style: none;
+        }
+        
+        .credentials li {
+            padding: 8px 0;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .credentials li::before {
+            content: '🎓';
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 40px;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .testimonial-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 120px 40px;
+            background: var(--white);
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            background: var(--light-bg);
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background: var(--sage);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 40px 30px;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-about h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-about p {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid,
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            
+            .services-grid,
+            .tools-grid,
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2em;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Section transitions */
+        section {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Dr. Sarah Mitchell, RD</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Book Consultation</a>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Transform Your Health Through Nutrition</h1>
+                <p>Evidence-based nutrition counseling and personalized meal plans to help you achieve your health goals and live your best life.</p>
+                <div class="hero-buttons">
+                    <a href="#courses" class="btn-primary">Explore Courses</a>
+                    <a href="#contact" class="btn-secondary">Get Started</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%239caf88' width='600' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EYour Professional Photo Here%3C/text%3E%3C/svg%3E" alt="Dr. Sarah Mitchell">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Clients Helped</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Client Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>My Services</h2>
+            <p>Comprehensive nutrition solutions tailored to your unique needs and lifestyle</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🍎</span>
+                <h3>Weight Management</h3>
+                <p>Sustainable weight loss and healthy weight gain programs designed for long-term success without restrictive dieting.</p>
+                <a href="#contact" class="service-link">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🩺</span>
+                <h3>Diabetes Management</h3>
+                <p>Specialized nutrition counseling for Type 1, Type 2, and pre-diabetes to help you control blood sugar and thrive.</p>
+                <a href="#courses" class="service-link">View Diabetes Course →</a>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">❤️</span>
+                <h3>Heart Health</h3>
+                <p>Evidence-based nutrition strategies to lower cholesterol, manage blood pressure, and reduce cardiovascular risk.</p>
+                <a href="#contact" class="service-link">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏃</span>
+                <h3>Sports Nutrition</h3>
+                <p>Performance optimization for athletes with personalized meal plans and supplement guidance.</p>
+                <a href="#contact" class="service-link">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🤰</span>
+                <h3>Prenatal Nutrition</h3>
+                <p>Comprehensive nutrition support for pregnancy and postpartum to ensure optimal health for mom and baby.</p>
+                <a href="#contact" class="service-link">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🌿</span>
+                <h3>Plant-Based Diets</h3>
+                <p>Expert guidance on vegetarian and vegan nutrition to ensure you're meeting all your nutritional needs.</p>
+                <a href="#contact" class="service-link">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="section-header">
+            <h2>Online Courses</h2>
+            <p>Self-paced, comprehensive programs to help you take control of your health</p>
+        </div>
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-header">
+                    <span class="course-badge">6 Weeks</span>
+                    <h3>Diabetes Control Academy</h3>
+                    <p>Master blood sugar management and live your best life with diabetes</p>
+                </div>
+                <div class="course-body">
+                    <ul class="course-features">
+                        <li>24+ video lessons & interactive content</li>
+                        <li>Blood sugar tracking tools</li>
+                        <li>Meal planning templates</li>
+                        <li>Carb counting made simple</li>
+                        <li>Exercise guidance for diabetics</li>
+                        <li>Lifetime access to all materials</li>
+                        <li>Weekly worksheets & action plans</li>
+                        <li>Private community support</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <div class="course-price">$297</div>
+                    <a href="#" class="course-button">Start Learning →</a>
+                </div>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-header" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                    <span class="course-badge">6 Weeks</span>
+                    <h3>Sustainable Weight Loss</h3>
+                    <p>Transform your body and mindset for lasting results</p>
+                </div>
+                <div class="course-body">
+                    <ul class="course-features">
+                        <li>Evidence-based weight loss strategies</li>
+                        <li>Interactive meal planner</li>
+                        <li>Habit tracking tools</li>
+                        <li>Exercise & movement guidance</li>
+                        <li>Mindset & emotional eating support</li>
+                        <li>Recipe collection (30+ recipes)</li>
+                        <li>Weekly progress tracker</li>
+                        <li>Goal setting workbook</li>
+                    </ul>
+                </div>
+                <div class="course-footer">
+                    <div class="course-price">$247</div>
+                    <a href="#" class="course-button">Start Learning →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <div class="section-header">
+            <h2>Free Nutrition Tools</h2>
+            <p>Interactive trackers and planners to support your health journey</p>
+        </div>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <span class="tool-icon">🩸</span>
+                <h3>Blood Sugar Tracker</h3>
+                <p>Log and monitor your blood glucose levels with automatic insights and pattern detection.</p>
+                <a href="#" class="tool-button">Open Tracker</a>
+            </div>
+            <div class="tool-card">
+                <span class="tool-icon">📊</span>
+                <h3>Weekly Progress Tracker</h3>
+                <p>Track your weight, measurements, habits, and goals with visual progress charts.</p>
+                <a href="#" class="tool-button">Open Tracker</a>
+            </div>
+            <div class="tool-card">
+                <span class="tool-icon">🍽️</span>
+                <h3>Meal Planner</h3>
+                <p>Plan your weekly meals, generate shopping lists, and stay organized.</p>
+                <a href="#" class="tool-button">Open Planner</a>
+            </div>
+            <div class="tool-card">
+                <span class="tool-icon">💭</span>
+                <h3>Food & Mood Journal</h3>
+                <p>Discover patterns between what you eat and how you feel with emotional eating insights.</p>
+                <a href="#" class="tool-button">Open Journal</a>
+            </div>
+            <div class="tool-card">
+                <span class="tool-icon">🧮</span>
+                <h3>Calorie Calculator</h3>
+                <p>Calculate your daily calorie needs based on your goals, activity level, and body composition.</p>
+                <a href="#" class="tool-button">Calculate Now</a>
+            </div>
+            <div class="tool-card">
+                <span class="tool-icon">💧</span>
+                <h3>Water Intake Tracker</h3>
+                <p>Stay hydrated with personalized water intake goals and daily tracking.</p>
+                <a href="#" class="tool-button">Start Tracking</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 600'%3E%3Crect fill='%23d4a574' width='500' height='600'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProfessional Headshot%3C/text%3E%3C/svg%3E" alt="Dr. Sarah Mitchell">
+            </div>
+            <div class="about-content">
+                <h2>About Dr. Sarah Mitchell</h2>
+                <p>With over 15 years of experience as a Registered Dietitian, I've dedicated my career to helping people transform their health through evidence-based nutrition.</p>
+                <p>My approach combines the latest nutritional science with compassionate, personalized care. I believe that sustainable health changes come from understanding your unique needs, not following one-size-fits-all diets.</p>
+                <p>I've helped hundreds of clients achieve their goals—from managing chronic conditions like diabetes and heart disease to reaching sustainable weight loss and improving athletic performance.</p>
+                
+                <div class="credentials">
+                    <h4>Credentials & Certifications</h4>
+                    <ul>
+                        <li>Registered Dietitian Nutritionist (RDN)</li>
+                        <li>Certified Diabetes Care and Education Specialist (CDCES)</li>
+                        <li>Master of Science in Clinical Nutrition</li>
+                        <li>Board Certified Specialist in Sports Dietetics</li>
+                        <li>Certified Intuitive Eating Counselor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <h2 style="color: white;">What Clients Say</h2>
+                <p style="color: rgba(255,255,255,0.9);">Real results from real people</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Sarah's diabetes course changed my life! My A1C dropped from 8.2 to 6.1 in just 3 months. She made blood sugar management actually make sense."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JM</div>
+                        <div class="author-info">
+                            <h4>Jennifer M.</h4>
+                            <p>Type 2 Diabetes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I lost 45 pounds and kept it off for 2 years! Sarah taught me how to eat for life, not just for weight loss. No more yo-yo dieting!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DK</div>
+                        <div class="author-info">
+                            <h4>David K.</h4>
+                            <p>Weight Loss Success</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The best investment in my health. Sarah's approach is practical, sustainable, and actually enjoyable. I finally have a healthy relationship with food."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ML</div>
+                        <div class="author-info">
+                            <h4>Maria L.</h4>
+                            <p>Emotional Eating Recovery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to start your health transformation? Let's talk!</p>
+            </div>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="(555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label>I'm interested in... *</label>
+                    <select required>
+                        <option value="">Select a service</option>
+                        <option>Weight Management</option>
+                        <option>Diabetes Management</option>
+                        <option>Heart Health</option>
+                        <option>Sports Nutrition</option>
+                        <option>Prenatal Nutrition</option>
+                        <option>Plant-Based Diet</option>
+                        <option>Online Course</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea placeholder="Tell me about your health goals and how I can help..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>Dr. Sarah Mitchell, RD</h3>
+                <p>Empowering you to achieve optimal health through evidence-based nutrition and compassionate care.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#tools">Free Tools</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="mailto:hello@sarahmitchellrd.com">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dr. Sarah Mitchell, RD. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you within 24 hours.');
+            event.target.reset();
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate sections on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
